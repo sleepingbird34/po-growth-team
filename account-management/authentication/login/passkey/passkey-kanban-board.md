@@ -162,6 +162,19 @@
   - tags: [UX]
   - defaultExpanded: false
 
+### [SCA-XXX] Thêm tính năng gửi email
+
+  - defaultExpanded: false
+    ```md
+    Gửi email cho users khi 
+    - Tạo passkey
+    - Xóa passkey
+    ```
+
+### Bổ sung use case diagram, activity diagram, sequence diagram
+
+  - defaultExpanded: false
+
 ## In progress
 
 ### [AC-3162] PasskeyManager
