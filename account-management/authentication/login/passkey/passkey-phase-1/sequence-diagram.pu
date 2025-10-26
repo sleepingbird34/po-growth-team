@@ -1,0 +1,54 @@
+@startuml
+!theme spacelab
+
+title Luồng Đăng Nhập Bằng Passkey
+
+actor User
+participant "App" as App
+participant "OS (iOS/Android)" as OS
+participant "Backend" as Backend
+
+autonumber 
+
+' == Luồng bắt đầu tại màn hình đăng nhập ==
+User -> App: Mở màn hình đăng nhập
+note over App: Kiểm tra thiết bị có hỗ trợ Passkey không. (iOS > 16 / Android > 9 / Có khóa màn hình). Nếu có, hiển thị button "Đăng nhập bằng Passkey".
+
+alt Đăng nhập bằng số điện thoại
+    User -> App: Nhập SĐT và nhấn button "Tiếp tục"
+    App -> Backend: Bắt đầu luồng đăng nhập bằng SĐT
+    note over App, Backend: ... (Luồng đăng nhập SĐT diễn ra) ...
+
+else Đăng nhập bằng Passkey
+    User -> App: Nhấn button "Đăng nhập bằng Passkey"
+    App -> OS: Yêu cầu đăng nhập bằng Passkey
+    activate OS
+
+    OS -> User: Hiển thị bottom sheet/prompt xác thực của hệ điều hành
+    User -> OS: Xác thực (Vân tay, FaceID, PIN, ...)
+
+    alt Xác thực trên OS thất bại
+        OS --> App: Trả về kết quả "Thất bại"
+        deactivate OS
+        App -> User: Hiển thị thông báo "Đăng nhập bằng Passkey không thành công"
+    else Xác thực trên OS thành công
+        OS --> App: Trả về kết quả "Thành công" cùng với dữ liệu xác thực
+        deactivate OS
+        App -> Backend: Gửi dữ liệu xác thực để hoàn tất đăng nhập
+        activate Backend
+
+        Backend -> Backend: Xác thực chữ ký số & Kiểm tra tài khoản (High risk/low risk)
+
+        alt Tài khoản thuộc diện "High risk"
+            Backend --> App: Trả về kết quả "High risk"
+            deactivate Backend
+            App -> User: Bắt đầu các luồng xử lý high risk (Hiển thị Captcha, Face Matching, ...)
+        else Tài khoản thuộc diện "Low risk"
+            Backend --> App: Trả về kết quả "Low risk" và session/token đăng nhập
+            deactivate Backend
+            App -> User: Đăng nhập thành công, điều hướng đến màn hình Home
+        end
+    end
+end
+
+@enduml
