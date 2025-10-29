@@ -605,3 +605,87 @@ ios, ios, Yes
 #### Learned
 - Ý, tui cũng fan plantuml đây, tích hợp plantuml vào gitlab pages viết tài liệu bá chấy luôn nha https://voz.vn/t/uml-co-con-đuoc-su-dung.345568/page-2
 - [Reverse OTP] Silent network authentication
+
+### Oct 26, 2025
+
+#### Learned
+- Callback vs Webhook
+- HMAC signature
+- outbound
+- gray score transaction
+
+### Oct 27, 2025
+
+#### PO tasks
+- Cập nhật thông tin tên hàm cho section của ACS và App-X trong PRD Passkey
+- Thêm việc kiểm tra config On / Off cho section của ACS và AppX
+  - Discuss ở group: https://chat.google.com/room/AAQAbU4AVvY/2_Z_NEJ5WrI/MnPtBwNhRKw?cls=10
+  - Cập nhật PRD:
+    - Thay PasskeyManager bằng PasskeyAuthentication để đồng bộ với source code.
+      - Tên các method: https://chat.google.com/dm/2lbP3CAAAAE/ma2CUZaAiLE/ma2CUZaAiLE?cls=10
+- Log bug
+  - Report ở https://chat.google.com/room/AAAAGm09L20/eIcmYQanGIo/eIcmYQanGIo?cls=10
+  - Không bấm "Tiếp tục" được ở Tùy chỉnh tài khoản > Mật khẩu đăng nhập > Xác thực mật khẩu
+  - Thiết bị: Samsung A54
+  - Vấn đề gặp phải trên 2 bản build:
+    - MoMo Store 5.0.0 - 50000, build 39085: https://store.momoapp.vn/d4FrWLhuNfYFymVZZPfQ
+    - MoMo Pro 5.0.0-rc7 - 50000, build Android 39060: https://store.momoapp.vn/elcSrnnHxLu4MHauWQGp
+  - KHÔNG gặp phải phải vấn đề này khi cài bản 4.2.27 build 42271 từ Google Play Store
+  - Steps to reproduce:
+    - Vào Tùy chỉnh tài khoản > Mật khẩu đăng nhập > Xác thực mật khẩu
+    - Nhập Complex Password. Trong trường hợp này Password là "3Ab2200999999"
+    - Bấm "Tiếp tục"
+      - Expected: App Chuyển qua màn "Xác thực mật khẩu"
+      - Actual: App KHÔNG chuyển qua màn "Xác thực mật khẩu"
+  - Feedback trên adminapp.momocdn.net (lúc cài bản Android Pro 5.0.0-rc.7 - 50000 v39060): https://adminapp.momocdn.net/utilities/feedback/detail?autoId=5182456
+
+### Oct 28, 2025
+
+#### PO tasks
+- Cập nhật lại thông tin của slide Product Growth - Internal Discussion
+  - Passkey
+    - https://docs.google.com/presentation/d/1AdXLWp6JznavTY3B7dyABGxzSeynAGMi48Bq5skUhVk/edit?slide=id.g39b273a261f_0_38#slide=id.g39b273a261f_0_38
+  - Reverse OTP
+    - https://docs.google.com/presentation/d/1AdXLWp6JznavTY3B7dyABGxzSeynAGMi48Bq5skUhVk/edit?slide=id.g36cf5c73a48_4_0#slide=id.g36cf5c73a48_4_0
+  - [Complex Pass] Add PIN as an additional sign-in method 
+    - https://docs.google.com/presentation/d/1AdXLWp6JznavTY3B7dyABGxzSeynAGMi48Bq5skUhVk/edit?slide=id.g36cf5c73a48_4_17#slide=id.g36cf5c73a48_4_17
+- Cập nhật lại thông tin của slide N2MM (Copy nội dung từ slide của Product Growth)
+
+#### Learned 
+- Vocab:
+  - compromised credential
+  - emulsifier
+
+### Oct 29, 2025
+
+#### PO tasks
+- Update thông tin trên Figma theo request của Risk
+  - https://chat.google.com/dm/iiRkwiAAAAE/zrd6YISIsO4/zrd6YISIsO4?cls=10
+  - Passkey được sync từ thiết bị iOS A sang thiết bị iOS B thì giải mã bằng cách nào?
+  - Có disable việc lưu Passkey vào Bitwarden trên code được không. Cake làm được 
+
+#### Learn
+- Ra bài tập về nhà cho lớp Kindergarten
+  - https://chat.google.com/room/AAQAlG-kiWQ/nl87LbLGiGo/nl87LbLGiGo?cls=10
+  - Hào
+    - Viết function (hàm) hashPassword() thực hiện việc hash password (băm password) :
+      - input: mật khẩu chưa được hash
+      - return: mật khẩu đã được hash
+  - anh Hiển
+    - Viết function createPassword()
+    - Viết chương trình cho người dùng tạo Complex Password - createPassword(), và lưu xuống file txt (xem file txt này như là một database).
+    - Các yêu cầu của Complex Password bao gồm:
+      - ít nhất 8 character
+      - Có ít nhất 01 chữ in hoa (A,B,C,...)
+      - Có ít nhất 01 chữ thường (a, b,c,...)
+      - Có ít nhất một số (1,2,3,..)
+  - Trang
+    - Viết chương trình thực hiện việc so sánh Password do người dùng nhập vào và Password đã được lưu trong file txt mà anh Hiển tạo ra.
+    - Nếu người dùng nhập ít hơn 8 ký tự sẽ yêu cầu người dùng nhập lại
+    - Logic là:
+      - Chờ người dùng nhập vào password
+      - check password
+      - Đọc file txt để lấy Password mà anh Hiển đã lưu xuống 
+      - So sánh password và in ra câu thông báo
+  - Khánh
+    - Viết chương trình C để thực hiện POST method và check Password ở Backend
