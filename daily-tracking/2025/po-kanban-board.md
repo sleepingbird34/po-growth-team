@@ -15,7 +15,7 @@
     Enable users to send OTP to SMSC when they have been waiting for the SMS OTP or Voice OTP for too long
     ```
 
-### [Project] PIN as an additional sign-in method for Password users
+### [Project] Complex Pass - Add PIN to sign in
 
   - due: 2025-12-15
   - tags: [ux, acs, sca]
@@ -34,6 +34,7 @@
 
 ### [Fix] Auto lock sau một khoảng thời gian khi để ứng dụng chạy dưới nền
 
+  - priority: high
   - defaultExpanded: false
     ```md
     https://chat.google.com/room/AAAAGm09L20/8CAVoVUP1Dc/8CAVoVUP1Dc?cls=10
@@ -56,6 +57,31 @@
 
   - defaultExpanded: false
 
+### Bỏ bớt màn hình Xác thực thành công
+
+  - defaultExpanded: false
+    ```md
+    Change device -> Chọn FM để xác thực -> Xác thực thành công -> Xác thực thành công
+    ```
+
+### Fix lỗi tiếng Anh ở luồng Đăng nhập
+
+  - defaultExpanded: false
+    ```md
+    - Luồng đăng ký https://chat.google.com/room/AAQA3oIawWU/x0Ayl6Mc8VI/x0Ayl6Mc8VI?cls=10`
+    ```
+
+### Kiểm tra xem lỗi tạo complex password
+
+  - defaultExpanded: false
+    ```md
+    https://chat.google.com/room/AAQA4r87TRo/NZFj_ZqmjKA/NZFj_ZqmjKA?cls=10
+    ```
+
+### Ảnh của MoMo không hiện ra khi bấm tìm keyword "MoMo" trên Apple App Store
+
+  - defaultExpanded: false
+
 ## Planning
 
 ## In progress
@@ -63,6 +89,14 @@
 ### Passkey - Phase 1
 
   - defaultExpanded: false
+
+### [Fix]  Không bấm "Tiếp tục" được ở Tùy chỉnh tài khoản > Mật khẩu đăng nhập > Xác thực mật khẩu
+
+  - priority: high
+  - defaultExpanded: false
+    ```md
+    https://chat.google.com/room/AAAAGm09L20/eIcmYQanGIo/oBha6qe8Ou4?cls=10
+    ```
 
 ## In review
 
